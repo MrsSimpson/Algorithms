@@ -5,8 +5,13 @@ def main():
     test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
 
 
-    selection_sort(test_array2)
-    print(test_array2)
+    selection_sort(test_array3)
+    print(test_array3)
+
+    test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
+    my_selection_sort(test_array3)
+    print(test_array3)
+
     insertion_sort(test_array3)
     print(test_array3)
 
@@ -19,8 +24,27 @@ def main():
     print(test_array3)
 
 #
+def my_selection_sort(test_array):
+    array_length = len(test_array)
+    smallest_index = 0
+    if array_length != 0 and array_length != 1:
+        for i in range(0, array_length - 1):
+            smallest = test_array[i]
+
+            for j in range((i+1), array_length):
+                if test_array[j] < smallest:
+                    smallest = test_array[j]
+                    smallest_index = j
+
+            if smallest != test_array[i]:
+                test_array[smallest_index], test_array[i] = test_array[i], test_array[smallest_index]
+
+    return test_array
+
+
+
 def selection_sort(test_array):
-    for i in range(0, len(test_array)):
+    for i in range(0, len(test_array) - 1):
         smallest = i
 
         for j in range(i+1, len(test_array)):
