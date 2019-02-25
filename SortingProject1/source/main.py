@@ -4,30 +4,28 @@ def main():
     test_array2 = [60, 30]
     test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
 
-    root_element = test_array3[0]
-    test_array = insertion_sort(test_array3)
+
+    selection_sort(test_array2)
+    print(test_array2)
+    insertion_sort(test_array3)
     print(test_array3)
 
-    test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
-    test_array = insertion_sort2(test_array3)
-    print(test_array3)
+#
+def selection_sort(test_array):
+    for i in range(0, len(test_array)):
+        smallest = i
 
+        for j in range(i+1, len(test_array)):
+            if test_array[j] < test_array[smallest]:
+                smallest = j
 
-def insertion_sort(test_array):
-    array_length = len(test_array)
-    if test_array != None and test_array != 1:
-        for j in range(1, array_length):
-            key = test_array[j]
-            i = j -1
-            while i >= 0 and test_array[i] > key:
-                test_array[i+1] = test_array[i]
-                i = i - 1
-
-            test_array[i + 1] = key
+        if (smallest != i):
+            test_array[i], test_array[smallest] = test_array[smallest], test_array[i]
 
     return test_array
-#
-def insertion_sort2(test_array):
+
+#Finished
+def insertion_sort(test_array):
     array_length = len(test_array)
     if array_length != 0 or array_length != 1:
         for i in range(1, array_length):
