@@ -9,6 +9,9 @@ def main():
     print(test_array2)
     insertion_sort(test_array3)
     print(test_array3)
+    test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
+    bubble_sort(test_array3)
+    print(test_array3)
 
 #
 def selection_sort(test_array):
@@ -39,5 +42,14 @@ def insertion_sort(test_array):
             test_array[j + 1] = current
 
         return test_array
+
+def bubble_sort(test_array):
+    for i in range(0, len(test_array) - 1):
+        for j in range(i+1, len(test_array)):
+            if test_array[j] < test_array[i]:
+                test_array[i], test_array[j] = test_array[j], test_array[i]
+
+    return test_array
+
 
 main()
