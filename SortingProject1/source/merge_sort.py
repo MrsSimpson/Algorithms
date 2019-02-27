@@ -6,7 +6,7 @@ from math import floor
    3. Call merge_sort on right_array
    4. Merge left and right array """
 
-def merge_sort(test_array):
+def merge_sort(test_array, new_array):
 
     if len(test_array) == 1:
         return
@@ -14,29 +14,27 @@ def merge_sort(test_array):
             middle = floor(len(test_array)/2)
             left_array = test_array[0: middle]
             right_array = test_array[middle: ]
-            merge_sort(left_array)
-            merge_sort(right_array)
-            merge(left_array, right_array)
+            merge_sort(left_array, new_array)
+            merge_sort(right_array, new_array)
+            merge(left_array, right_array, new_array)
 
-#         if left < right:
-#            middle = floor(((len(test_array))/2))
-#            merge_sort(test_array, left, middle)
-#            merge_sort(test_array, (middle + 1), right)
-#            merge(test_array, left, middle, right)
+    return new_array
 
 
-def merge(left_array, right_array):
+def merge(left_array, right_array, new_array):
     i = 0
     j = 0
-    test_array = [None]
+
     total_length = len(left_array) + len(right_array)
-    for k in range(0, total_length):
+    for k in range(0, len(left_array)):
         if left_array[i] <= right_array[j]:
-            test_array[k] = left_array[i]
+            new_array.append(left_array[i])
             i = i + 1
         else:
-            test_array[k] = right_array[j]
+            new_array.append(right_array[j])
             j = j + 1
+
+    return new_array
 
 """
 def merge(test_array, left, middle, right):

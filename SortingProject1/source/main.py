@@ -32,7 +32,8 @@ def main():
     print(test_array3)
 
     test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
-    merge_sort(test_array3)
+    new_array = []
+    merge_sort(test_array3, new_array)
     print(test_array3)
 
 
