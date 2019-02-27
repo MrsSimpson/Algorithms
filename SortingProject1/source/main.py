@@ -2,7 +2,7 @@ from source.selection_sort import selection_sort, my_selection_sort
 from source.insertion_sort import insertion_sort, another_insertions_sort
 from source.bubble_sort import bubble_sort
 from source.merge_sort import initial_merge_sort
-from source import heap_sort
+from source.heap_sort import heapsort
 from source import quick_sort
 
 
@@ -44,5 +44,7 @@ def main():
     initial_merge_sort(array2)
     print(array2)
 
-
+    array1, array2, array3, array4 = init_arrays(array1, array2, array3, array4)
+    heapsort(array4)
+    print(array4)
 main()
