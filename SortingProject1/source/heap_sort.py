@@ -28,12 +28,14 @@ def max_heapify(the_array, i):
 
 def build_max_heap(the_array):
     Heap.heap_size = len(the_array)
-    for i in range(floor(len(the_array)/2), 0):
+    beginning_range = floor(len(the_array) / 2)
+    for i in range(beginning_range, 0, -1):
         max_heapify(the_array, i)
 
 def heapsort(the_array):
     build_max_heap(the_array)
-    for i in range(len(the_array), 1, -1):
+    array_length = len(the_array)
+    for i in range(array_length, 1, -1):
         the_array[0], the_array[i] = the_array[i], the_array[0]
         max_heapify(the_array, 0)
 
