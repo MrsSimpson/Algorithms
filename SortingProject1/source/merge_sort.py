@@ -6,17 +6,17 @@ from math import floor
    3. Call merge_sort on right_array
    4. Merge left and right array """
 
-def merge_sort(test_array, left, right):
-    if test_array[0] == 1:
+def merge_sort(test_array):
+
+    if len(test_array) == 1:
         return
     else:
-        if left < right:
-
             middle = floor(len(test_array)/2)
             left_array = test_array[0: middle]
             right_array = test_array[middle-1: -1]
-            merge_sort(left_array, left_array[0], left_array[-1])
-            merge_sort(right_array, right_array[0], right_array[-1])
+            merge_sort(left_array)
+            merge_sort(right_array)
+            merge(left_array, right_array)
 
 #         if left < right:
 #            middle = floor(((len(test_array))/2))
@@ -25,6 +25,20 @@ def merge_sort(test_array, left, right):
 #            merge(test_array, left, middle, right)
 
 
+def merge(left_array, right_array):
+    i = 0
+    j = 0
+    test_array = []
+    total_length = len(left_array) + len(right_array)
+    for k in range(0, total_length):
+        if left_array[i] <= right_array[j]:
+            test_array[k] = left_array[i]
+            i = i + 1
+        else:
+            test_array[k] = right_array[j]
+            j = j + 1
+
+"""
 def merge(test_array, left, middle, right):
     total_length = len(test_array)
     left_array_len = (middle - left) + 1
@@ -37,14 +51,6 @@ def merge(test_array, left, middle, right):
     right_array.append(-1000)
 
 
-    i = 1
-    j = 1
-    test_array = None
-    for k in range(left, right):
-        if left_array[i] <= right_array[j]:
-            test_array[k] = left_array[i]
-            i = i + 1
-        else:
-            test_array[k] = right_array[j]
-            j = j + 1
 
+
+"""
