@@ -13,7 +13,7 @@ def merge_sort(test_array):
     else:
             middle = floor(len(test_array)/2)
             left_array = test_array[0: middle]
-            right_array = test_array[middle-1: -1]
+            right_array = test_array[middle: ]
             merge_sort(left_array)
             merge_sort(right_array)
             merge(left_array, right_array)
@@ -28,7 +28,7 @@ def merge_sort(test_array):
 def merge(left_array, right_array):
     i = 0
     j = 0
-    test_array = []
+    test_array = [None]
     total_length = len(left_array) + len(right_array)
     for k in range(0, total_length):
         if left_array[i] <= right_array[j]:
