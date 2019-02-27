@@ -1,3 +1,11 @@
+from source.selection_sort import selection_sort, my_selection_sort
+from source.insertion_sort import insertion_sort, another_insertions_sort
+from source.bubble_sort import bubble_sort
+from source.merge_sort import merge_sort, merge
+from source import heap_sort
+from source import quick_sort
+
+
 def main():
 
     test_array1 = []
@@ -23,77 +31,11 @@ def main():
     bubble_sort(test_array3)
     print(test_array3)
 
-#
-def my_selection_sort(test_array):
-    array_length = len(test_array)
-    smallest_index = 0
-    if array_length != 0 and array_length != 1:
-        for i in range(0, array_length - 1):
-            smallest = test_array[i]
-
-            for j in range((i+1), array_length):
-                if test_array[j] < smallest:
-                    smallest = test_array[j]
-                    smallest_index = j
-
-            if smallest != test_array[i]:
-                test_array[smallest_index], test_array[i] = test_array[i], test_array[smallest_index]
-
-    return test_array
-
-
-
-def selection_sort(test_array):
-    for i in range(0, len(test_array) - 1):
-        smallest = i
-
-        for j in range(i+1, len(test_array)):
-            if test_array[j] < test_array[smallest]:
-                smallest = j
-
-        if (smallest != i):
-            test_array[i], test_array[smallest] = test_array[smallest], test_array[i]
-
-    return test_array
-
-#Books implementation of insertion sort
-def insertion_sort(test_array):
-    array_length = len(test_array)
-    if array_length != 0 or array_length != 1:
-        for i in range(1, array_length):
-            current = test_array[i]
-            j = i - 1
-
-            while j >= 0 and test_array[j] > current:
-                test_array[j+1] = test_array[j]
-                j = j - 1
-
-            test_array[j + 1] = current
-
-        return test_array
-
-
-""" My implementation of an insertion sorting algorithm"""
-def another_insertions_sort(test_array):
-    array_len = len(test_array)
-    if test_array != None and test_array != 1:
-        for i in range(1, array_len):
-            index2 = test_array[i]
-            inner_range = i
-            for j in range ((i-1), -1, -1):
-                index1 = test_array[j]
-                index2 = test_array[inner_range]
-                if index1 > index2:
-                    test_array[j], test_array[inner_range] = test_array[inner_range], test_array[j]
-                inner_range = inner_range - 1
-
-def bubble_sort(test_array):
-    for i in range(0, len(test_array) - 1):
-        for j in range(i+1, len(test_array)):
-            if test_array[j] < test_array[i]:
-                test_array[i], test_array[j] = test_array[j], test_array[i]
-
-    return test_array
+    test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
+    left = test_array3[0]
+    right = test_array3[-1]
+    merge_sort(test_array3, left, right)
+    print(test_array3)
 
 
 main()
