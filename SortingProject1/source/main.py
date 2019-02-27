@@ -1,7 +1,7 @@
 from source.selection_sort import selection_sort, my_selection_sort
 from source.insertion_sort import insertion_sort, another_insertions_sort
 from source.bubble_sort import bubble_sort
-from source.merge_sort import merge_sort, merge
+from source.merge_sort import initial_merge_sort
 from source import heap_sort
 from source import quick_sort
 
@@ -32,8 +32,8 @@ def main():
     print(test_array3)
 
     test_array3 = [20, 30, 10, 80, 60, 50, 40, 70]
-    new_array = []
-    merge_sort(test_array3, new_array)
+
+    initial_merge_sort(test_array3)
     print(test_array3)
 
 
