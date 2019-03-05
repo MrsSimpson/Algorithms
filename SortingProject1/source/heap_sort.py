@@ -1,44 +1,66 @@
 from math import floor
 
-def parent(i):
-    return floor(i / 2)
 
-def left(i):
-    return 2*i
+class Heap:
+    def __init__(self, the_array):
+        self.array = the_array
+        self.root = 0
+        self.heap_size = 0
 
-def right(i):
-    return (2 * i) + 1
+        self.parent = None
+        self.left = None
+        self.right = None
 
-def max_heapify(the_array, i):
-    left_child = left(i)
-    right_child = right(i)
+    def the_parent(self, i):
+        self.parent = floor((i - 1) / 2)
+        return self.parent
 
-    if left_child <= the_array.heap_size and the_array[left_child] > the_array[right_child]:
-        largest = left_child
+    def left_child(self, i):
+        self.left = (2 * i) + 1
+        if self.left >= self.heap_size:
+            return None
+        else:
+            return self.left
+
+    def right_child(self, i):
+        self.right = (2 * i) + 2
+        if self.right >= self.heap_size:
+            return None
+        else:
+            return self.right
+
+def max_heapify(the_heap, i):
+    left = the_heap.left_child(i)
+    right = the_heap.right_child(i)
+
+    if left != None and left <= the_heap.heap_size and the_heap.array[left] > the_heap.array[i]:
+        largest = left
 
     else:
         largest = i
 
-    if right_child <= the_array.heap_size and the_array[right_child] > the_array[largest]:
-        largest = right_child
+    if right != None and right <= the_heap.heap_size and the_heap.array[right] > the_heap.array[largest]:
+        largest = right
 
     if largest != i:
-        the_array[i], the_array[largest] =  the_array[largest], the_array[i]
-        max_heapify(the_array, largest)
+        the_heap.array[i], the_heap.array[largest] =  the_heap.array[largest], the_heap.array[i]
+        max_heapify(the_heap, largest)
 
 def build_max_heap(the_array):
-    Heap.heap_size = len(the_array)
-    beginning_range = floor(len(the_array) / 2)
-    for i in range(beginning_range, 0, -1):
+    the_array.heap_size = len(the_array.array)
+    beginning_range = floor(len(the_array.array) / 2) -1
+    for i in range(beginning_range, -1, -1):
         max_heapify(the_array, i)
 
-def heapsort(the_array):
-    build_max_heap(the_array)
-    array_length = len(the_array)
-    for i in range(array_length, 1, -1):
-        the_array[0], the_array[i] = the_array[i], the_array[0]
-        max_heapify(the_array, 0)
+def heapsort(the_heap, the_array):
+    if not the_array:
+        return
 
-class Heap:
-    def __init__(self, the_array):
-        self.heap_size = 0
+    build_max_heap(the_heap)
+    array_length = len(the_array) - 1
+    for i in range(array_length, -1, -1):
+        the_heap.array[0], the_heap.array[i] = the_heap.array[i], the_heap.array[0]
+        the_heap.heap_size = the_heap.heap_size - 1
+        max_heapify(the_heap, 0)
+
+
