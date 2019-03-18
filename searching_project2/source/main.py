@@ -3,9 +3,9 @@ from binary_search_tree import *
 
 def main():
 
-    test_data = {2}
-    test_data2 = {40, 22}
-    test_data3 = {50, 11, 4, 90, 70, 2, 89}
+    test_data = [2]
+    test_data2 = [40, 22]
+    test_data3 = [50, 11, 4, 90, 70, 2, 89]
 
     binary_tree1 = Tree()
 
@@ -25,7 +25,8 @@ def main():
     print((binary_tree1.find_minimum(binary_tree1.root)).key)
 
     print((binary_tree1.find_successor(binary_tree1.find_minimum(binary_tree1.root))).key)
+    print((binary_tree1.find_successor(binary_tree1.root)).key)
 
-    
+
 
 main()
