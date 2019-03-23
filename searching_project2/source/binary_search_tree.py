@@ -35,7 +35,7 @@ class Tree:
         if node.right_child is not None:
             return self.find_minimum(node.right_child)
         parent_node = node.parent
-        while parent_node is not None and node == parent_node.right_child:
+        while parent_node is not None and node is parent_node.right_child:
             node = parent_node
             parent_node = parent_node.parent
         return parent_node
@@ -53,14 +53,14 @@ class Tree:
     def delete_node(self, node):
         if node.left_child is None:
             self.transplant(node, node.right_child)
-        elif node.right is None:
+        elif node.right_child is None:
             self.transplant(node, node.left_child)
         else:
             new_node = self.find_minimum(node.right_child)
             if new_node.parent != node:
                 self.transplant(new_node, new_node.right_child)
                 new_node.right_child = node.right_child
-                new_node.right.parent = new_node
+                new_node.right_child.parent = new_node
             self.transplant(node, new_node)
             new_node.left_child = node.left_child
             new_node.left_child.parent = new_node
