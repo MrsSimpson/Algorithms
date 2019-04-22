@@ -41,11 +41,12 @@ def main():
     #find the successors for nodes in the tree if a successor exists
 
     #find the successor for a node with two children (the root)
-    print((binary_tree1.find_successor(binary_tree1.root)).key)
+    print("The successor of the root node is ",(binary_tree1.find_successor(binary_tree1.root)).key)
     #find the successor for a node with no right_child
-    print((binary_tree1.find_successor(binary_tree1.find_minimum(binary_tree1.root))).key)
+    print("The successor of the min node is ",
+          (binary_tree1.find_successor(binary_tree1.find_minimum(binary_tree1.root))).key)
     #find a successor for a node with one child
-    print((binary_tree1.find_successor(binary_tree1.root.left_child.right_child)).key)
+    print("The successor of a node with only one child is ",(binary_tree1.find_successor(binary_tree1.root.left_child.right_child)).key)
     #prove that the maximum value of the tree has no successor
     successor = binary_tree1.find_successor(binary_tree1.find_maximum(binary_tree1.root))
     if successor is not None:
