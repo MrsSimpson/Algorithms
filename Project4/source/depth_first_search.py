@@ -4,6 +4,7 @@ def dfs(graph):
         graph[vertex][1] = "w" #setting the color of the first vertex to 0
         graph[vertex][4] = None #setting the parent of the first vertex to None
 
+    print("The path searched for depth first search traversal is: ")
     global time #time is a global variable
     time = 0
     for vertex in graph: #initialize each vertex's elements in the graph
