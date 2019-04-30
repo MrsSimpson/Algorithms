@@ -14,17 +14,17 @@ def dfs(graph):
 
 
 def dfs_visit(graph, vertex):
-    global time
+    global time #making global time accessable in dfs_visit
     print(graph[vertex][0])
-    graph[vertex][1] = "g"
-    time += 1
-    graph[vertex][2] = time
+    graph[vertex][1] = "g" #set the vertex that was passed in to gray for discovered
+    time += 1 #make the starting time incrememnt by 1
+    graph[vertex][2] = time #set the vertex's starting time
     for v in graph[vertex][5]: #look through the list of adjacent vertex that are contained in the vertex
         if graph[v][1] is "w":  #if the adj vertex color is still white...
             graph[v][4] = graph[vertex][0] #set the parent of the adj vertex to the vertex that it came from
             dfs_visit(graph, graph[v][0]) #recursively call dfs_visit with the current adj node
 
-    graph[vertex][1] = "b" 
-    time += 1
-    graph[vertex][3] = time
+    graph[vertex][1] = "b" #set the vertex's color to black because it is complete
+    time += 1 #increment the finish time
+    graph[vertex][3] = time #set the finish time for the completed vertex
 
